@@ -76,6 +76,7 @@ export const signupUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
     try {
+        
         const { username, password } = req.body
        
         const user = await User.findOne({ username })
@@ -86,7 +87,7 @@ export const loginUser = async (req, res) => {
         }
 
         generateTokenAndSetCookie(user._id, res);
-        return res.status(400).json({
+        return res.status(200).json({
             _id: user._id,
             name: user.name,
             email: user.email,
