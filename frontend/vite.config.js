@@ -8,7 +8,8 @@ export default defineConfig({
     port:3000,
     proxy:{                       //get rid of CORS error
       "/api":{
-        target:"http://localhost:5001",         //now while fetching we only have to write after this
+        // target:"http://localhost:5001",         //now while fetching we only have to write after this
+        target:"https://threads-clone-app-main-2.onrender.com",         //now while fetching we only have to write after this
         changeOrigin:true,
         secure:false,             //for http not https
       }
