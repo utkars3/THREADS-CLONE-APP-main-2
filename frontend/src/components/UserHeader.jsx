@@ -6,6 +6,7 @@ import { useRecoilValue } from 'recoil'
 import userAtom from '../atoms/userAtom'
 import { Link } from 'react-router-dom'
 import useShowToast from '../hooks/useShowToast'
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const UserHeader = ({ user }) => {                                //we are seeing the profile of this user
   const toast = useToast()                                        //for popping up in bottom
@@ -39,7 +40,7 @@ const UserHeader = ({ user }) => {                                //we are seein
 
     try {
       //current user ja ke uski userid ko follow karega
-      const res = await fetch(`/api/users/follow/${user._id}`, {
+      const res = await fetch(`${apiUrl}/api/users/follow/${user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

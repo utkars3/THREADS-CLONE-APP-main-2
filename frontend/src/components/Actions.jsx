@@ -14,13 +14,13 @@ const Actions = ({ post }) => {
    const [posts,setPosts]=useRecoilState(postsAtom)
     const [isLiking,setIsLiking]=useState(false)
     const [isReplying,setIsReplying]=useState(false)
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     const handleLikeAndUnlike=async()=>{
         if(!user)return showToast("Error","You must be logged in to like a post","error")
         if(isLiking)return;
         setIsLiking(true)
         try {
-            const res=await fetch(`/api/posts/like/${post._id}`,{
+            const res=await fetch(`${apiUrl}/api/posts/like/${post._id}`,{
                 method:"PUT",
                 headers:{
                     "Content-type":"application/json",
@@ -66,7 +66,7 @@ const Actions = ({ post }) => {
         if(isReplying)return true;
         setIsReplying(true);
         try {
-            const res=await fetch(`/api/posts/reply/${post._id}`,{
+            const res=await fetch(`${apiUrl}/api/posts/reply/${post._id}`,{
                 method:"PUT",
                 headers:{
                     "Content-type":"application/json",

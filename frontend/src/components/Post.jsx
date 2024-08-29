@@ -8,6 +8,7 @@ import { DeleteIcon } from '@chakra-ui/icons'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import userAtom from '../atoms/userAtom'
 import postsAtom from '../atoms/postsAtom'
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Post = ({post,postedBy}) => {
     const [user,setUser]=useState(null)
@@ -20,7 +21,7 @@ const Post = ({post,postedBy}) => {
     useEffect(()=>{
         const getUser=async()=>{
             try {
-                const res=await fetch(`/api/users/profile/${postedBy}`)
+                const res=await fetch(`${apiUrl}/api/users/profile/${postedBy}`)
                 const data=await res.json()
              
                 if(data.error){
@@ -41,7 +42,7 @@ const Post = ({post,postedBy}) => {
             e.preventDefault();
             if(!window.confirm("Are you sure to delete this post?"))return;
 
-            const res=await fetch(`/api/posts/${post._id}`,{
+            const res=await fetch(`${apiUrl}/api/posts/${post._id}`,{
                 method:"DELETE",
             })
             const data=await res.json();
