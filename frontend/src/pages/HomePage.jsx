@@ -4,7 +4,7 @@ import useShowToast from '../hooks/useShowToast';
 import Post from '../components/Post';
 import { useRecoilState } from 'recoil';
 import postsAtom from '../atoms/postsAtom';
-const apiUrl = import.meta.env.VITE_API_URL;
+
 const HomePage = () => {
   const showToast = useShowToast();
   const [posts,setPosts]=useRecoilState(postsAtom)
@@ -17,7 +17,7 @@ const HomePage = () => {
       setLoading(true)
       setPosts([])
       try {
-        const res=await fetch("${apiUrl}/api/posts/feed");
+        const res=await fetch("/api/posts/feed");
         const data=await res.json()
         if(data.error){
       showToast("Error", data.error, "error")

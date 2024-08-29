@@ -3,7 +3,7 @@ import SignupCard from '../components/SignupCard'
 import LoginCard from '../components/LoginCard'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import authScreenAtom from '../atoms/authAtom'
-const apiUrl = import.meta.env.VITE_API_URL;
+
 const AuthPage = () => {
     const authScreenState=useRecoilValue(authScreenAtom);
 

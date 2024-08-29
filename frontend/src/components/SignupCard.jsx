@@ -21,7 +21,6 @@ import { useSetRecoilState } from 'recoil';
 import authScreenAtom from '../atoms/authAtom';
 import useShowToast from '../hooks/useShowToast';
 import userAtom from '../atoms/userAtom';
-const apiUrl = import.meta.env.VITE_API_URL;
   
   export default function SignupCard() {
     const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +37,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
     const handleSignup=async()=>{
         try {
-            const res=await fetch("${apiUrl}/api/users/signup",{
+            const res=await fetch("/api/users/signup",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

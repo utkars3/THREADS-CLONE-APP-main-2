@@ -8,7 +8,7 @@ import userAtom from '../atoms/userAtom'
 import useShowToast from '../hooks/useShowToast'
 import postsAtom from '../atoms/postsAtom'
 import { useParams } from 'react-router-dom'
-const apiUrl = import.meta.env.VITE_API_URL;
+
 const MAX_CHAR = 500;
 
 const CreatePost = () => {
@@ -38,7 +38,7 @@ const CreatePost = () => {
   const handleCreatePost = async () => {
     setLoading(true)
     try {
-      const res = await fetch(`${apiUrl}/api/posts/create/`, {
+      const res = await fetch(`/api/posts/create/`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
